@@ -23,16 +23,16 @@ console.assert(max(13, 15) == 15, "max");
 
 function maxOfThree(a, b, c) {
   "use strict";
-  if (a > b && c) {
+  if (a > b && a > c) {
     return a;
-  } else if (b > (a && c)) {
+  } else if (b > a && b > c) {
     return b;
-  } else if (c > (a && b)) {
+  } else if (c > a && c > b) {
     return c;
   }
 }
 
-console.assert(maxOfThree(15, 50, 809));
+console.assert(maxOfThree(150, 50, 9));
 
 // ---------------------
 // Write a function that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.
@@ -109,24 +109,27 @@ console.assert(multiply([1, 2, 3, 4]));
 // ---------------------
 
 function reverse(letters) {
-  "use strict";
-  var sentance = "";
-  letters.reverse(function(letter) {
-    sentance += letters;
-  });
-  return sentance;
+  return letters.split('').reverse().join('');
 }
 
-console.log(reverse("This is fun"));
+
+console.assert(reverse('jag testar'));
 
 // ---------------------
 // Write a function findLongestWord() that takes an array of words and returns the length of the longest one.
 // ---------------------
 
 function findLongestWord(words) {
-  "use strict";
-  //...
+  var max = 0;
+  words.forEach(function(word) {
+    if (word.split('').length > max) {
+      max = word.split('').length;
+    }
+  });
+  return max;
 }
+
+console.assert(findLongestWord(['Jimmy', 'Thigpen', 'is', 'cool']));
 
 // ---------------------
 // Write a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.
